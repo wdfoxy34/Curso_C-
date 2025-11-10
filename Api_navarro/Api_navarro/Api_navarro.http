@@ -1,0 +1,6 @@
+@Api_navarro_HostAddress = http://localhost:5229
+
+GET {{Api_navarro_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
