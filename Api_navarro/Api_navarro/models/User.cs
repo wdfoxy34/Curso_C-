@@ -34,5 +34,60 @@ namespace Api_navarro.models
             }
             return $"Nome do usuário: {nome}";
         }
+
+
+        public virtual string EmailBase(string email)
+        {
+            if (string.IsNullOrEmpty(email) || !email.Contains("@"))
+            {
+                throw new ArgumentException("Email inválido.");
+            }
+            return $"Email do usuário: {email}";
+        }
+
+
+        public virtual int CPFBase(int cpf)
+        {
+            if (cpf <= 0)
+            {
+                throw new ArgumentException("CPF inválido.");
+            }
+            if (cpf > 9)
+            {
+                throw new ArgumentException("CPF deve ter no máximo 11 dígitos.");
+            }
+            return cpf;
+        }
+
+
+        public virtual double NumeroBase(double numero)
+        {
+            if (numero <= 0)
+            {
+                throw new ArgumentException("Número inválido.");
+            }
+            if (numero > 9)
+            {
+                throw new ArgumentException("Número deve ter no máximo 9 dígitos.");
+            }
+            return numero;
+        }
+
+        public virtual string SenhaBase(string senha)
+        {
+            if (string.IsNullOrEmpty(senha) || senha.Length < 6)
+            {
+                throw new ArgumentException("Senha inválida. Deve ter pelo menos 6 caracteres.");
+            }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(senha, @"[A-Z]"))
+            {
+                throw new ArgumentException("Senha deve conter pelo menos uma letra maiúscula.");
+            }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(senha, @"[a-z]"))
+            {
+                throw new ArgumentException("Senha deve conter pelo menos uma letra minúscula.");
+            }
+            return $"Senha do usuário: {senha}";
+        }
     }
 }
