@@ -29,6 +29,23 @@ namespace Api_navarro.Controllers
             return Ok(curso);
         }
 
+        [HttpPost]
+        public IActionResult Post([FromBody] Curso newCurso)
+        {
+            if (newCurso == null) 
+            {
+                return BadRequest("o campo não existe ");
+            }
+            if (List.Any(x => x.Id == newCurso.Id)) 
+            {
+                return Conflict(new { Mensagem = $"Este curso ja existe Id={newCurso.Id}"})
+            }
+            List.Add(newCurso);
+            return CreatedAtAction(nameof(get), new { id = newCurso.Id }, newCurso);
+
+
+               
+        }
 
 
     }
