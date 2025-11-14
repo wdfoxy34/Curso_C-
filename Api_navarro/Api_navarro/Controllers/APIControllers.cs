@@ -38,7 +38,7 @@ namespace Api_navarro.Controllers
             }
             if (List.Any(x => x.Id == newCurso.Id)) 
             {
-                return Conflict(new { Mensagem = $"Este curso ja existe Id={newCurso.Id}"})
+                return Conflict(new { Mensagem = $"Este curso ja existe Id={newCurso.Id}" });
             }
             List.Add(newCurso);
             return CreatedAtAction(nameof(get), new { id = newCurso.Id }, newCurso);
