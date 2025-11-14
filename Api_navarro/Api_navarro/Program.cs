@@ -14,7 +14,8 @@ namespace Api_navarro
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-            builder.Services.AddDbContext<Datacontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<Datacontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")))
+                ;
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

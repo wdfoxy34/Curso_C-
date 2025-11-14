@@ -7,7 +7,7 @@
         public string Description { get; set; }
         public string Type { get; set; }
         public decimal Preco {  get; set; }
-
+        public bool IsComplete { get; set; }
         public Curso(int id, string name, string description, string type, decimal preco)
         {
             Id = id;
@@ -15,6 +15,7 @@
             Description = description;
             Type = type;
             Preco = preco;
+            IsComplete = true;
         }
     }
 
