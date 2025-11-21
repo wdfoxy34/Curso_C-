@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Api_navarro.Data;
+using Api_navarro.models;
 
 namespace Api_navarro.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("api/")]
     [ApiController]
     public class APIControllers : Controller
     {
@@ -15,7 +16,7 @@ namespace Api_navarro.Controllers
             _datacontext = datacontext;
         }
 
-        [HttpGet]
+        [HttpGet("fetch_all")]
         public IActionResult get()
         {
             return Ok(_datacontext.Cursos.ToList());
