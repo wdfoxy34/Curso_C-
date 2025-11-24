@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Api_navarro.models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api_navarro.Data
 {

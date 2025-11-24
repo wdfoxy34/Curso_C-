@@ -5,8 +5,8 @@ using Api_navarro.models;
 
 namespace Api_navarro.Controllers
 {
-    [Route("api/")]
     [ApiController]
+    [Route("api/")]
     public class APIControllers : Controller
     {
         private readonly Datacontext _datacontext;
@@ -16,24 +16,24 @@ namespace Api_navarro.Controllers
             _datacontext = datacontext;
         }
 
-        [HttpGet("fetch_all")]
+        [HttpGet("Cursos")] //mostra os cursos disponiveis 
         public IActionResult get()
         {
             return Ok(_datacontext.Cursos.ToList());
         }
 
-        [HttpGet("{Id}")]
-        public IActionResult getbyId(int id) 
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id) 
         {
-            var curso = _datacontext.Cursos.ToList().Find(x => x.Id == id);
+            var curso = _datacontext.Cursos.FirstOrDefault(x => x.Id == id);
             if (curso == null) 
             {
-                return NotFound( new { Mensage = $"Curso ao encontrado id={id}"});
+                return NotFound( new { Message = $"O curso id={id} não pode ser encontrado"});
             }
             return Ok(curso);
         }
 
-        [HttpPost]
+        [HttpPost] //novo curso
         public IActionResult Post([FromBody] Curso newCurso)
         {
             if (newCurso == null) 
@@ -93,7 +93,7 @@ namespace Api_navarro.Controllers
             throw new NotImplementedException();
         }
 
-        [HttpDelete("{Id}")]
+        [HttpDelete("{Id}/Remove")]
         public IActionResult Deletr(int id)
         {
             var Curso = _datacontext.Cursos.FirstOrDefault(x => x.Id == id);
