@@ -5,7 +5,7 @@
 namespace Api_navarro.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,8 @@ namespace Api_navarro.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsComplete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

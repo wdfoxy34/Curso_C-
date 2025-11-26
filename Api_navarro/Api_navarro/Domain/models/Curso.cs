@@ -1,4 +1,4 @@
-﻿namespace Api_navarro.models
+﻿namespace Api_navarro.Domain.models
 
 {
     public class Curso

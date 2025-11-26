@@ -21,7 +21,7 @@ namespace Api_navarro.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Api_navarro.Curso", b =>
+            modelBuilder.Entity("Api_navarro.models.Curso", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,6 +32,9 @@ namespace Api_navarro.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsComplete")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
