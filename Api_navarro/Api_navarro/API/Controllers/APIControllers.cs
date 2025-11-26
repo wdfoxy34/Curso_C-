@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Api_navarro.Data;
 using Api_navarro.models;
 
-namespace Api_navarro.Controllers
+namespace Api_navarro.API.Controllers
 {
     [ApiController]
     [Route("api/")]
