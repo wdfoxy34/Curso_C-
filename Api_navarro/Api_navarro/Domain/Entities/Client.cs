@@ -1,8 +1,8 @@
-﻿namespace Api_navarro.Domain.models
+﻿namespace Api_navarro.Domain.Entities
 {
-    public class Client: user
+    public class Client: User
     {
-        public Client(string name, string email, int cpf, double numero, string senha) : base(name, email, cpf, numero, senha)
+        public Client(string name, string email, string cpf, string numero, string senha) : base(name, email, cpf, numero, senha)
         {
         }
         public override string NomeBase(string nome)

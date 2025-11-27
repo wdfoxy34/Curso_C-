@@ -1,8 +1,8 @@
-﻿namespace Api_navarro.models
+﻿namespace Api_navarro.Domain.Entities
 {
-    public class Admin: user
+    public class Admin: User
     {
-        public Admin(string name, string email, int cpf, double numero, string senha) : base(name, email, cpf, numero, senha)
+        public Admin(string name, string email, string cpf, string numero, string senha) : base(name, email, cpf, numero, senha)
         {
         }
 
