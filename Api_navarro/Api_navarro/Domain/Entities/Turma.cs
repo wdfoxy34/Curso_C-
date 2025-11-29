@@ -1,4 +1,6 @@
-﻿namespace Api_navarro.Domain.models
+﻿using Api_navarro.Domain.Entities;
+
+namespace Api_navarro.Domain.Entities
 {
     public class Turma
     {

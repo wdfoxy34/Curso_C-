@@ -1,4 +1,4 @@
-﻿namespace Api_navarro.Domain.models
+﻿namespace Api_navarro.Domain.Entities
 {
     public class Pagamento
     {
