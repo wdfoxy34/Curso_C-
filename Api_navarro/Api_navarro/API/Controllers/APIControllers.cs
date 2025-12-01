@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Api_navarro.Data;
-using Api_navarro.models;
+using Api_navarro.Infrastructure.Persistance;
+using Api_navarro.Domain.Entities;
 
 namespace Api_navarro.API.Controllers
 {

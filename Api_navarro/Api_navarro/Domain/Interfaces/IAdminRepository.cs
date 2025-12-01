@@ -5,8 +5,8 @@ namespace Api_navarro.Domain.Interfaces
     {
         Task<List<Admin?>> GetByNameAsync(string name);
         Task<Admin?> GetByEmailAsync(string email);
-        Task<Admin> GetByCPFAsync(string email);
-        Task<Admin> GetByTelefoneAsync(string telefone);
+        Task<Admin?> GetByCPFAsync(string email);
+        Task<Admin?> GetByTelefoneAsync(string telefone);
         Task AddAsync(Admin admin);
     }
 }

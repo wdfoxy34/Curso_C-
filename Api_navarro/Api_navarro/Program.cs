@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Api_navarro.Infrastructure.Persistence;
+using Api_navarro.Infrastructure.Persistance;
 
 namespace Api_navarro
 {
