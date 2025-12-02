@@ -1,7 +1,6 @@
-using System.Net.Http.Headers;
 using Api_navarro.Domain.Entities;
 using Api_navarro.Domain.Interfaces;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+
 
 namespace Api_navarro.UseCases
 {
@@ -51,7 +50,7 @@ namespace Api_navarro.UseCases
             if (name == null) throw new ArgumentNullException("Argumento faltante: name");
             if (description == null) throw new ArgumentNullException("Argumento faltante: description");
             if (type == null) throw new ArgumentNullException("Argumento faltante: type");
-            if (preco <= 0) throw new ArgumentException("Preço dever ser maior que 0");
+            if (preco <= 0) throw new ArgumentException("Preï¿½o dever ser maior que 0");
 
             Curso curso = new Curso(name, description, type, preco);
             await _repo.AddAsync(curso);
