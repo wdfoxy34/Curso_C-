@@ -27,3 +27,10 @@ Este projeto é uma API desenvolvida em C# para gerenciar a comercialização de
     ```
     F5 para iniciar a aplicação no Visual Studio.
     ```
+4. Acesse a API via navegador ou ferramenta de API (ex: Postman) no endereço:
+    ```
+    http://localhost:5000
+    ```
+## Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
+
