@@ -60,10 +60,10 @@ namespace Api_navarro.UseCases
             
             var emailExistente = await _repo.GetByEmailAsync(email);
             if (emailExistente != null)
-                throw new Exception("Já existe um admin com esse email");
+                throw new Exception("Já existe um cliente com esse email");
             var cpfExistente = await _repo.GetByCPFAsync(cpf);
             if (cpfExistente != null)
-                throw new Exception("Já existe um admin com esse CPF");
+                throw new Exception("Já existe um cliente com esse CPF");
             
             Client novoClient = new Client(nome,email,cpf,telefone,senha);
             await _repo.AddAsync(novoClient);
