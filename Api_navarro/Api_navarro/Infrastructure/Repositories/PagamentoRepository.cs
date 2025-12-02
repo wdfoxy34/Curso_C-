@@ -14,6 +14,7 @@ namespace Api_navarro.Infrastructure.Repositories
         {
             _context = context;
         }
+
         public async Task AddAsync(Pagamento pagamento)
         {
             _context.Pagamentos.Add(pagamento);

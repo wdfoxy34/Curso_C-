@@ -45,5 +45,6 @@ namespace Api_navarro.UseCases
         {
             return await _repo.GetbyPaymentAsync(payment);
         }
+
     }
 }

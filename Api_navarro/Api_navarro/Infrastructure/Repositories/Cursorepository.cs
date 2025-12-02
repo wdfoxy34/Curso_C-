@@ -38,7 +38,7 @@ namespace Api_navarro.Infrastructure.Repositories
         }
         public async Task<Curso?> GetbyIscompletAsync(bool iscomplet) 
         {
-            return await _context.Cursos.FirstOrDefaultAsync(u => u.IsComplete == iscomplet)
+            return await _context.Cursos.FirstOrDefaultAsync(u => u.IsComplete == iscomplet);
         }
         public async Task AddAsync(Curso curso) 
         {
