@@ -1,46 +1,57 @@
-﻿using Api_navarro.Infrastructure.Persistance;
-using Microsoft.EntityFrameworkCore;
+﻿using Api_navarro.Domain.Entities;
 using Api_navarro.Domain.Interfaces;
-using Api_navarro.Domain.Entities;
-using System.ComponentModel;
-using System.Globalization;
+using Api_navarro.Infrastructure.Persistance;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api_navarro.Infrastructure.Repositories
 {
-    public class Cursorepository: ICursosRepository 
+    public class CursoRepository : ICursoRepository
     {
         private readonly Datacontext _context;
 
-        public Cursorepository(Datacontext context) 
+        public CursoRepository(Datacontext context)
         {
             _context = context;
         }
 
-        public async Task<Curso> GetbyIdAsync(int Id) 
+        public async Task<List<Curso?>> GetByNameAsync(string name)
         {
-            return await _context.Cursos.FirstOrDefaultAsync(u => u.Id == Id);
+            List<Curso> result = await _context.Cursos.Where(u => u.Name == name).ToListAsync();
+            return result;
         }
-        public async Task<List<Curso?>> GetbyNameAsync(string name) 
+
+        public async Task<Curso?> GetByIdAsync(int id)
         {
-            return await _context.Cursos.Where(u => u.Name == name).ToListAsync();
+            return await _context.Cursos.FirstOrDefaultAsync(u => u.Id == id);
         }
-        public async Task<Curso> getbyDescriptionAsync(String description) 
+
+        public async Task<List<Curso?>> GetByTypeAsync(string type)
         {
-            return await _context.Cursos.FirstOrDefaultAsync(u => u.Description == description);
+            return await _context.Cursos.Where(u => u.Type == type).ToListAsync();
         }
-        public async Task<Curso?> GetbyTypeAsync(string type) 
+
+        public async Task<List<Curso?>> GetByPriceAsync(decimal price, string filter)
         {
-            return await _context.Cursos.FirstOrDefaultAsync(u => u.Type == type);
+            List<Curso?> listaCursos = [];
+            if (filter == "maior")
+            {
+                listaCursos = await _context.Cursos.Where(u => u.Preco > price).ToListAsync();
+            }
+
+            if (filter == "menor")
+            {
+                listaCursos = await _context.Cursos.Where(u => u.Preco < price).ToListAsync();
+            }
+
+            return listaCursos;
         }
-        public async Task<Curso?> GetbyPrecoAsync(decimal preco) 
+
+        public async Task<List<Curso?>> GetByCompletionAsync(bool status)
         {
-            return await _context.Cursos.FirstOrDefaultAsync(u => u.Preco == preco);
+            return await _context.Cursos.Where(u => u.IsComplete == status).ToListAsync();
         }
-        public async Task<Curso?> GetbyIscompletAsync(bool iscomplet) 
-        {
-            return await _context.Cursos.FirstOrDefaultAsync(u => u.IsComplete == iscomplet)
-        }
-        public async Task AddAsync(Curso curso) 
+
+        public async Task AddAsync(Curso curso)
         {
             await _context.Cursos.AddAsync(curso);
             await _context.SaveChangesAsync();
