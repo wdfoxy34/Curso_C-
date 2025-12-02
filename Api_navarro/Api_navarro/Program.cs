@@ -16,6 +16,9 @@ namespace Api_navarro
 
             builder.Services.AddScoped<IClientRepository, ClientRepository>();
             builder.Services.AddScoped<ClientUsecase>();
+            
+            builder.Services.AddScoped<ICursoRepository, CursoRepository>();
+            builder.Services.AddScoped<CursoUsecase>();
 
             // Add services to the container.
 
