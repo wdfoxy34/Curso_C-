@@ -104,5 +104,6 @@ namespace Api_navarro.API.Controllers
             _datacontext.SaveChanges();
             return ok(new { Mensage = $"Curso removido com sucesso '{Curso.Name}'" });
         }
+
     }
 }
