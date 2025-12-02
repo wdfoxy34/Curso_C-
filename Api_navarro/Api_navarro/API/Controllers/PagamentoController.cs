@@ -25,27 +25,23 @@ namespace Api_navarro.Controllers
             _clientRepo = clientRepo;
             _pagamentoRepo = pagamentoRepo;
         }
-
-        // ------------------------------------------------------
         // POST: api/pagamento
-        // Adicionar um novo pagamento
-        // ------------------------------------------------------
         [HttpPost]
         public async Task<IActionResult> CreatePagamento([FromBody] PagamentoDTO dto)
         {
             try
             {
-                // Buscar o curso
+                // Buscar curso
                 var curso = await _cursoRepo.GetByIdAsync(dto.CursoId);
                 if (curso is null)
                     return NotFound(new { message = "Curso não encontrado" });
 
-                // Buscar o client
+                // Buscar client
                 var client = await _clientRepo.GetByEmailAsync(dto.ClientEmail);
                 if (client is null)
                     return NotFound(new { message = "Cliente não encontrado" });
 
-                // Criar o pagamento
+                // Cria pagamento
                 var pagamento = await _pagamentoUsecase.AdicionarPagamentoAsync(
                     curso,
                     client,
@@ -63,11 +59,7 @@ namespace Api_navarro.Controllers
                 return StatusCode(500, new { message = ex.Message });
             }
         }
-
-        // ------------------------------------------------------
         // GET: api/pagamento/{id}
-        // Buscar pagamento por ID
-        // ------------------------------------------------------
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPagamentoById(int id)
         {
@@ -78,10 +70,7 @@ namespace Api_navarro.Controllers
             return Ok(pagamento);
         }
 
-        // ------------------------------------------------------
         // GET: api/pagamento/status/{payment}
-        // Buscar pagamento pelo status (true/false)
-        // ------------------------------------------------------
         [HttpGet("status/{payment}")]
         public async Task<IActionResult> GetPagamentoByPayment(bool payment)
         {
