@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Api_navarro.Infrastructure.Persistance;
+using Api_navarro.Infrastructure.Repositories;
+using Api_navarro.Domain.Interfaces;
+using Api_navarro.UseCases;
 
 namespace Api_navarro
 {
@@ -8,14 +11,15 @@ namespace Api_navarro
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+            builder.Services.AddScoped<AdminUsecase>();
 
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-            builder.Services.AddDbContext<Datacontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")))
-                ;
+            builder.Services.AddDbContext<Datacontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
