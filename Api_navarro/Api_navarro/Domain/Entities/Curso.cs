@@ -9,9 +9,8 @@
         public string Type { get; set; }
         public decimal Preco {  get; set; }
         public bool IsComplete { get; set; }
-        public Curso(int id, string name, string description, string type, decimal preco)
+        public Curso(string name, string description, string type, decimal preco)
         {
-            Id = id;
             Name = name;
             Description = description;
             Type = type;
@@ -19,5 +18,4 @@
             IsComplete = true;
         }
     }
-
 }
